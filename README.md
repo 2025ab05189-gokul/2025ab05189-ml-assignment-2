@@ -56,7 +56,7 @@ The dataset has **12 columns** (11 features + 1 target), satisfying the minimum 
 | Decision Tree | 0.8152 | 0.8598 | 0.8333 | 0.8333 | 0.8333 | 0.6260 |
 | kNN | 0.8967 | 0.9256 | 0.8879 | 0.9314 | 0.9091 | 0.7910 |
 | Naive Bayes | 0.8913 | 0.9280 | 0.8796 | 0.9314 | 0.9048 | 0.7801 |
-| Random Forest (Ensemble) | 0.8967 | 0.9322 | 0.8952 | 0.9216 | 0.9082 | 0.7907 |
+| Random Forest (Ensemble) | 0.8913 | 0.9320 | 0.8942 | 0.9118 | 0.9029 | 0.7797 |
 | XGBoost (Ensemble) | 0.8750 | 0.9237 | 0.8911 | 0.8824 | 0.8867 | 0.7474 |
 
 ### Model Performance Observations
@@ -65,9 +65,9 @@ The dataset has **12 columns** (11 features + 1 target), satisfying the minimum 
 |---|---|
 | **Logistic Regression** | Achieved 88.59% accuracy and serves as a strong interpretable baseline. High recall (0.9314) means it correctly identifies 93% of heart disease patients. AUC of 0.9014 confirms good discriminative ability. The linear decision boundary generalizes well on this dataset, making it suitable for clinical deployment where model transparency is required. |
 | **Decision Tree** | Lowest accuracy (81.52%) and AUC (0.8598) among all models, indicating high variance and overfitting tendencies even with max_depth=5. Balanced precision and recall (both 0.8333) but the lowest MCC (0.6260) reflects weaker overall classification quality. Most valuable for interpretability via tree visualization rather than raw predictive performance. |
-| **kNN** | Tied for the highest accuracy (89.67%) with Random Forest. Achieved the same high recall (0.9314) as Logistic Regression and Naive Bayes. AUC of 0.9256 is strong. Performance is heavily dependent on feature scaling (StandardScaler applied) and the choice of k=7. The instance-based approach captures local data patterns effectively for this dataset size. |
+| **kNN** | Achieved the highest accuracy (89.67%) among all models. Achieved the same high recall (0.9314) as Logistic Regression and Naive Bayes. AUC of 0.9256 is strong. Performance is heavily dependent on feature scaling (StandardScaler applied) and the choice of k=7. The instance-based approach captures local data patterns effectively for this dataset size. |
 | **Naive Bayes** | Achieved 89.13% accuracy with the joint-highest recall (0.9314) — catching 93% of disease cases. AUC of 0.9280 is the second-highest, indicating well-calibrated probability estimates. Fast training time makes it practical for real-time applications. The feature independence assumption slightly limits precision compared to ensemble methods. |
-| **Random Forest (Ensemble)** | Tied for the highest accuracy (89.67%) and achieved the highest AUC (0.9322) among all models. Best precision (0.8952) indicates fewer false positives. Bagging 200 decorrelated trees significantly reduces the variance problem seen in the single Decision Tree (+8.15% accuracy improvement). MCC of 0.7907 reflects strong balanced performance across both classes. |
+| **Random Forest (Ensemble)** | Achieved 89.13% accuracy and the highest AUC (0.9320) among all models. Best precision (0.8942) indicates fewer false positives. Bagging 200 decorrelated trees significantly reduces the variance problem seen in the single Decision Tree (+7.61% accuracy improvement). MCC of 0.7797 reflects strong balanced performance across both classes. |
 | **XGBoost (Ensemble)** | Achieved 87.50% accuracy with the highest precision (0.8911) but the lowest recall (0.8824) among the top models. AUC of 0.9237 is competitive. The gradient boosting approach with L1/L2 regularization provides good generalization. Lower recall compared to other models suggests a more conservative decision threshold; tuning the threshold could improve sensitivity for clinical use. |
 
 ---
@@ -119,7 +119,7 @@ streamlit run app.py
 
 ## Deployment
 
-Deployed on **Streamlit Community Cloud**: [Live App Link — _add after deployment_]
+Deployed on **Streamlit Community Cloud**: [https://2025ab05189-ml-assignment-2-2nwpjziuprlqztegu6m4t9.streamlit.app/](https://2025ab05189-ml-assignment-2-2nwpjziuprlqztegu6m4t9.streamlit.app/)
 
 ---
 
