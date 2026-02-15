@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ML Assignment 2 — Submission</title>
+<style>
+  @media print { body { margin: 0.5in; } .no-print { display: none; } .page-break { page-break-before: always; } img { max-width: 100%; } }
+  body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; color: #222; line-height: 1.5; font-size: 11pt; }
+  h1 { text-align: center; color: #1a237e; font-size: 18pt; margin-bottom: 4px; }
+  h2 { color: #283593; border-bottom: 2px solid #3949ab; padding-bottom: 4px; font-size: 14pt; margin-top: 24px; }
+  h3 { color: #3949ab; font-size: 12pt; margin-top: 16px; }
+  .header { text-align: center; margin-bottom: 20px; border-bottom: 3px solid #1a237e; padding-bottom: 12px; }
+  .header p { margin: 2px 0; color: #444; }
+  .link-box { background: #e8eaf6; border: 1px solid #9fa8da; border-radius: 6px; padding: 12px 16px; margin: 10px 0; }
+  .link-box strong { color: #1a237e; }
+  .link-box a { color: #1565c0; word-break: break-all; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 10pt; }
+  th { background: #283593; color: white; padding: 8px 6px; text-align: left; }
+  td { padding: 6px; border: 1px solid #ccc; }
+  tr:nth-child(even) { background: #f5f5f5; }
+  .obs-table td:first-child { font-weight: bold; width: 160px; white-space: nowrap; }
+  .obs-table td:last-child { font-size: 10pt; }
+  .section-num { color: #c62828; font-weight: bold; }
+  code { background: #f5f5f5; padding: 1px 4px; border-radius: 3px; font-size: 10pt; }
+  .print-btn { display: block; margin: 20px auto; padding: 12px 32px; background: #283593; color: white; border: none; border-radius: 6px; font-size: 14pt; cursor: pointer; }
+  .print-btn:hover { background: #1a237e; }
+  .feat-table td:nth-child(1) { font-family: monospace; font-size: 10pt; }
+  .screenshot-container img { max-width: 100%; border: 1px solid #ccc; border-radius: 4px; margin: 8px 0; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>❤️ Heart Disease Prediction — ML Classification</h1>
+  <p><strong>Machine Learning — Assignment 2</strong></p>
+  <p>M.Tech (AIML) — BITS Pilani, Work Integrated Learning Programmes</p>
+  <p><strong>Student ID:</strong> 2025AB05189</p>
+  <p><strong>Submission Date:</strong> 15-Feb-2026</p>
+</div>
+
+<h2><span class="section-num">1.</span> GitHub Repository Link</h2>
+<div class="link-box">
+  <strong>📁 GitHub Repository:</strong><br>
+  <a href="https://github.com/2025ab05189-gokul/2025ab05189-ml-assignment-2">https://github.com/2025ab05189-gokul/2025ab05189-ml-assignment-2</a>
+  <br><small>Contains: app.py, requirements.txt, README.md, model/model_training.py, data/heart.csv, data/test_data.csv</small>
+</div>
+
+<h2><span class="section-num">2.</span> Live Streamlit App Link</h2>
+<div class="link-box">
+  <strong>🌐 Live Streamlit App:</strong><br>
+  <a href="https://2025ab05189-ml-assignment-2-gpqyn5rtpruetanfabzappx.streamlit.app/">https://2025ab05189-ml-assignment-2-gpqyn5rtpruetanfabzappx.streamlit.app/</a>
+  <br><small>Deployed on Streamlit Community Cloud — opens interactive frontend when clicked</small>
+</div>
+
+<h2><span class="section-num">3.</span> BITS Virtual Lab — Execution Screenshots</h2>
+<div class="screenshot-container">
+  <img src="Lab_Proof_1.png" alt="BITS Lab Screenshot 1">
+  <img src="Lab_proof_2.png" alt="BITS Lab Screenshot 2">
+  <img src="Lab_proof_3.png" alt="BITS Lab Screenshot 3">
+  <img src="lab_Proof_4.png" alt="BITS Lab Screenshot 4">
+</div>
+
+<div class="page-break"></div>
+<h2><span class="section-num">4.</span> README.md Content</h2>
+
+<h3>a. Problem Statement</h3>
+<p>Heart disease is one of the leading causes of death globally. Early detection using clinical parameters can save lives. The goal of this project is to build and compare multiple machine learning classification models that predict whether a patient has heart disease based on 11 clinical features.</p>
+<p>We implement 6 different classifiers, evaluate them using 6 standard metrics, and deploy an interactive Streamlit web application for demonstration.</p>
+
+<h3>b. Dataset Description</h3>
+<table>
+  <tr><th>Property</th><th>Details</th></tr>
+  <tr><td><strong>Name</strong></td><td>Heart Failure Prediction Dataset</td></tr>
+  <tr><td><strong>Source</strong></td><td>Kaggle — fedesoriano (https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction)</td></tr>
+  <tr><td><strong>Origin</strong></td><td>Combination of 5 independent heart disease datasets (Cleveland, Hungarian, Switzerland, Long Beach VA, Stalog)</td></tr>
+  <tr><td><strong>Instances</strong></td><td>918 (after removing duplicates from 1190 combined records)</td></tr>
+  <tr><td><strong>Features</strong></td><td>11 clinical features + 1 binary target</td></tr>
+  <tr><td><strong>Target</strong></td><td><code>target</code> — 1 (heart disease, 508 cases) / 0 (no heart disease, 410 cases)</td></tr>
+  <tr><td><strong>Task</strong></td><td>Binary Classification</td></tr>
+  <tr><td><strong>Train/Test Split</strong></td><td>80/20 stratified (734 train, 184 test)</td></tr>
+</table>
+
+<h4>Feature Details</h4>
+<table class="feat-table">
+  <tr><th>Feature</th><th>Description</th><th>Type</th></tr>
+  <tr><td>age</td><td>Age of the patient (years)</td><td>Numerical</td></tr>
+  <tr><td>sex</td><td>Sex of the patient (1=Male, 0=Female)</td><td>Binary</td></tr>
+  <tr><td>chest_pain_type</td><td>Chest pain type (1-4)</td><td>Categorical</td></tr>
+  <tr><td>resting_bp</td><td>Resting blood pressure (mm Hg)</td><td>Numerical</td></tr>
+  <tr><td>cholesterol</td><td>Serum cholesterol (mg/dl)</td><td>Numerical</td></tr>
+  <tr><td>fasting_bs</td><td>Fasting blood sugar > 120 mg/dl (1/0)</td><td>Binary</td></tr>
+  <tr><td>resting_ecg</td><td>Resting ECG results (0-2)</td><td>Categorical</td></tr>
+  <tr><td>max_hr</td><td>Maximum heart rate achieved</td><td>Numerical</td></tr>
+  <tr><td>exercise_angina</td><td>Exercise-induced angina (1/0)</td><td>Binary</td></tr>
+  <tr><td>oldpeak</td><td>ST depression induced by exercise</td><td>Numerical</td></tr>
+  <tr><td>st_slope</td><td>Slope of peak exercise ST segment (1-3)</td><td>Categorical</td></tr>
+</table>
+
+<h3>c. Models Used</h3>
+<h4>Comparison Table — Evaluation Metrics</h4>
+<table>
+  <tr><th>ML Model Name</th><th>Accuracy</th><th>AUC</th><th>Precision</th><th>Recall</th><th>F1</th><th>MCC</th></tr>
+  <tr><td>Logistic Regression</td><td>0.8859</td><td>0.9014</td><td>0.8716</td><td>0.9314</td><td>0.9005</td><td>0.7694</td></tr>
+  <tr><td>Decision Tree</td><td>0.8152</td><td>0.8598</td><td>0.8333</td><td>0.8333</td><td>0.8333</td><td>0.6260</td></tr>
+  <tr><td>kNN</td><td>0.8967</td><td>0.9256</td><td>0.8879</td><td>0.9314</td><td>0.9091</td><td>0.7910</td></tr>
+  <tr><td>Naive Bayes</td><td>0.8913</td><td>0.9280</td><td>0.8796</td><td>0.9314</td><td>0.9048</td><td>0.7801</td></tr>
+  <tr><td>Random Forest (Ensemble)</td><td>0.8913</td><td>0.9320</td><td>0.8942</td><td>0.9118</td><td>0.9029</td><td>0.7797</td></tr>
+  <tr><td>XGBoost (Ensemble)</td><td>0.8750</td><td>0.9237</td><td>0.8911</td><td>0.8824</td><td>0.8867</td><td>0.7474</td></tr>
+</table>
+
+<h4>Model Performance Observations</h4>
+<table class="obs-table">
+  <tr><th>ML Model Name</th><th>Observation</th></tr>
+  <tr><td>Logistic Regression</td><td>Achieved 88.59% accuracy and serves as a strong interpretable baseline. High recall (0.9314) means it correctly identifies 93% of heart disease patients. AUC of 0.9014 confirms good discriminative ability. The linear decision boundary generalizes well on this dataset, making it suitable for clinical deployment where model transparency is required.</td></tr>
+  <tr><td>Decision Tree</td><td>Lowest accuracy (81.52%) and AUC (0.8598) among all models, indicating high variance and overfitting tendencies even with max_depth=5. Balanced precision and recall (both 0.8333) but the lowest MCC (0.6260) reflects weaker overall classification quality. Most valuable for interpretability via tree visualization rather than raw predictive performance.</td></tr>
+  <tr><td>kNN</td><td>Achieved the highest accuracy (89.67%) among all models. Achieved the same high recall (0.9314) as Logistic Regression and Naive Bayes. AUC of 0.9256 is strong. Performance is heavily dependent on feature scaling (StandardScaler applied) and the choice of k=7. The instance-based approach captures local data patterns effectively for this dataset size.</td></tr>
+  <tr><td>Naive Bayes</td><td>Achieved 89.13% accuracy with the joint-highest recall (0.9314) — catching 93% of disease cases. AUC of 0.9280 is the second-highest, indicating well-calibrated probability estimates. Fast training time makes it practical for real-time applications. The feature independence assumption slightly limits precision compared to ensemble methods.</td></tr>
+  <tr><td>Random Forest (Ensemble)</td><td>Achieved 89.13% accuracy and the highest AUC (0.9320) among all models. Best precision (0.8942) indicates fewer false positives. Bagging 200 decorrelated trees significantly reduces the variance problem seen in the single Decision Tree (+7.61% accuracy improvement). MCC of 0.7797 reflects strong balanced performance across both classes.</td></tr>
+  <tr><td>XGBoost (Ensemble)</td><td>Achieved 87.50% accuracy with the highest precision (0.8911) but the lowest recall (0.8824) among the top models. AUC of 0.9237 is competitive. The gradient boosting approach with L1/L2 regularization provides good generalization. Lower recall compared to other models suggests a more conservative decision threshold; tuning the threshold could improve sensitivity for clinical use.</td></tr>
+</table>
+
+<div class="page-break"></div>
+<h3>Project Structure</h3>
+<pre style="background:#f5f5f5;padding:12px;border-radius:6px;font-size:10pt;">
+2025ab05189-ml-assignment-2/
+│── app.py                    # Streamlit web application
+│── requirements.txt          # Python dependencies
+│── README.md                 # Project documentation
+│── data/
+│   ├── heart.csv             # Full dataset
+│   └── test_data.csv         # Test data for evaluation
+│── model/
+│   └── model_training.py     # Training script (.py) for all 6 models
+</pre>
+
+<h3>Streamlit App Features</h3>
+<table>
+  <tr><th>Feature</th><th>Description</th></tr>
+  <tr><td><strong>Dataset upload (CSV)</strong></td><td>Upload test data or use the default dataset</td></tr>
+  <tr><td><strong>Test data download</strong></td><td>Download test_data.csv from sidebar</td></tr>
+  <tr><td><strong>Model selection dropdown</strong></td><td>Choose any of the 6 models for detailed analysis</td></tr>
+  <tr><td><strong>Evaluation metrics display</strong></td><td>Accuracy, AUC, Precision, Recall, F1, MCC</td></tr>
+  <tr><td><strong>Confusion matrix & report</strong></td><td>Per-model heatmap and classification report</td></tr>
+  <tr><td><strong>ROC curve comparison</strong></td><td>Overlay of all model ROC curves</td></tr>
+</table>
+
+<h3>Deployment</h3>
+<p>Deployed on <strong>Streamlit Community Cloud</strong>: <a href="https://2025ab05189-ml-assignment-2-gpqyn5rtpruetanfabzappx.streamlit.app/">https://2025ab05189-ml-assignment-2-gpqyn5rtpruetanfabzappx.streamlit.app/</a></p>
+
+<h3>Tech Stack</h3>
+<p>Python 3.10+, Streamlit, scikit-learn, XGBoost, pandas, numpy, matplotlib, seaborn</p>
+</body>
+</html>

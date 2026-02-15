@@ -1,6 +1,6 @@
 # ❤️ Heart Disease Prediction — ML Classification
 
-**M.Tech (AIML/DSE) — Machine Learning Assignment 2**  
+**M.Tech (AIML) — Machine Learning Assignment 2**  
 **BITS Pilani — Work Integrated Learning Programmes**
 
 ---
@@ -119,7 +119,7 @@ streamlit run app.py
 
 ## Deployment
 
-Deployed on **Streamlit Community Cloud**: [https://2025ab05189-ml-assignment-2-2nwpjziuprlqztegu6m4t9.streamlit.app/](https://2025ab05189-ml-assignment-2-2nwpjziuprlqztegu6m4t9.streamlit.app/)
+Deployed on **Streamlit Community Cloud**: [https://2025ab05189-ml-assignment-2-gpqyn5rtpruetanfabzappx.streamlit.app/](https://2025ab05189-ml-assignment-2-gpqyn5rtpruetanfabzappx.streamlit.app/)
 
 ---
 
