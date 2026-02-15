@@ -191,6 +191,26 @@ else:
 
 st.sidebar.markdown(f"**Rows:** {df.shape[0]}  |  **Columns:** {df.shape[1]}")
 
+# Download test data button
+st.sidebar.divider()
+st.sidebar.header("📥 Download Test Data")
+st.sidebar.markdown("Download a sample test CSV to try the upload feature.")
+
+@st.cache_data
+def get_test_csv(dataframe):
+    X_all, y_all = preprocess(dataframe)
+    _, X_t, _, y_t = train_test_split(X_all, y_all, test_size=0.2, random_state=42, stratify=y_all)
+    test = pd.DataFrame(X_t, columns=X_all.columns)
+    test["target"] = y_t.values
+    return test.to_csv(index=False)
+
+st.sidebar.download_button(
+    label="⬇️ Download test_data.csv",
+    data=get_test_csv(df),
+    file_name="test_data.csv",
+    mime="text/csv",
+)
+
 # ──────────────────────────────────────────────
 # Tabs
 # ──────────────────────────────────────────────
